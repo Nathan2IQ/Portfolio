@@ -1,0 +1,41 @@
+header {
+  background: linear-gradient(to bottom, #001713, 60%, #00231c);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 20px 30px 20px;
+
+  nav {
+    a {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 0 25px;
+      transition: all 0.3s ease;
+      transform: scale(1);
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 25%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.5s ease;
+      }
+    }
+    a:hover {
+      cursor: pointer;
+      color: white;
+      transform: scale(1.2);
+
+      &::after {
+        left: 25%;
+        width: 50%;
+      }
+    }
+  }
+}

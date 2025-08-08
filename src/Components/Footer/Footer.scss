@@ -1,0 +1,41 @@
+footer {
+  background: linear-gradient(to top, #001713, 60%, #00231c);
+  padding: 20px 50px;
+
+  .contact {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+
+    h3 {
+      font-size: 26px;
+    }
+
+    .contact__links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .fa-envelope {
+        padding-right: 10px;
+      }
+
+      a {
+        color: rgba(255, 255, 255, 0.87);
+        text-decoration: none;
+
+        .fa-github {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    padding: 10px 0 0 0;
+  }
+}

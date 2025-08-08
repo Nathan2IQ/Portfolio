@@ -1,9 +1,13 @@
 import "./App.scss";
+import Header from "./Components/Header/Header.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
 export default function App() {
   return (
-    <main>
-      <h1>Hello World</h1>
-    </main>
+    <>
+      <Header />
+      <main></main>
+      <Footer />
+    </>
   );
 }
