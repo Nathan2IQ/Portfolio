@@ -37,7 +37,6 @@ header {
       display: inline-block;
       position: relative;
       text-decoration: none;
-      transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1), all 0.3s ease;
 
       &::after {
         content: "";
