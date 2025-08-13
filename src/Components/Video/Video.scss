@@ -1,15 +1,5 @@
-.app-background {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-
-.app-content {
-  position: relative;
-  z-index: 1;
-}
-
 .video-container {
+  scroll-snap-align: start;
   position: relative;
   width: 100vw;
   height: 100vh;

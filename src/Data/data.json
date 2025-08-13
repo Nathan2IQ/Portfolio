@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Mogo Shop",
+    "image": "/assets/Mogo_Shop.png",
+    "description": "Site d'achat-revente de skins de jeu. J'ai travaillé sur l'identité visuelle et le design du site.",
+    "tech": ["html", "css", "js"]
+  },
+
+  {
+    "title": "Argent bank",
+    "image": "/assets/Argent_bank.png",
+    "description": "Application bancaire, j'ai dû intégrer le système de connexion et la gestion des informations de l'utilisateur, ainsi que le responsive.",
+    "tech": ["react", "css", "mongodb"]
+  },
+  {
+    "title": "724events",
+    "image": "/assets/724events.png",
+    "description": "Site d'événementiel, le projet consistait à débugger le site et intégrer de nouvelles fonctionnalités",
+    "tech": ["react", "css", "scss"]
+  },
+  {
+    "title": "Kasa",
+    "image": "/assets/Kasa.png",
+    "description": "Application de réservation de particuliers, création entière du site avec react, ainsi que le responsive.",
+    "tech": ["react", "scss"]
+  },
+  {
+    "title": "Nina Carducci",
+    "image": "/assets/Nina_Carducci.png",
+    "description": "Portfolio de Nina Carducci, j'ai optimisé son site pour une meilleure visibilité.",
+    "tech": ["html", "css", "js"]
+  },
+  {
+    "title": "Booki",
+    "image": "/assets/Booki.png",
+    "description": "Site de réservation hôtelière, création entière du site, ainsi que le responsive.",
+    "tech": ["html", "css"]
+  },
+  {
+    "title": "Sophie bluel",
+    "image": "/assets/Sophie_bluel.png",
+    "description": "Portfolio de Sophie Buel, intégration d'un système de connexion pour la cliente avec possibilité d'ajout ou de suppression de projets.",
+    "tech": ["html", "css", "js"]
+  },
+  {
+    "title": "Oh My Food",
+    "image": "/assets/Oh_My_Food.png",
+    "description": "Site de réservation de restaurants, création entière du site, ainsi que le responsive.",
+    "tech": ["html", "scss"]
+  },
+  {
+    "title": "Riding cities",
+    "image": "/assets/Riding_cities.png",
+    "description": "Site associatif de skateboard, intégration d'une section présentant les fondateurs.",
+    "tech": ["html", "css"]
+  }
+]

@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+}
+
 html,
 body {
   margin: 0;
@@ -24,29 +28,4 @@ body {
 h1 h2 h3 h4 p {
   margin: 0;
   padding: 0;
-}
-
-.main-content {
-  position: relative;
-  z-index: 1;
-  background: linear-gradient(140deg, #333333, 40%, #5c5c5c, #858585);
-  min-height: 50vh;
-}
-
-.video-header-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-
-.video-header-container .video-container {
-  height: 100vh;
-}
-
-.video-header-container header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
 }

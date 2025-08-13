@@ -2,26 +2,35 @@ import "./Header.scss";
 
 import { useEffect, useState } from "react";
 
-export default function Header() {
+export default function Header({ scrollContainerRef }) {
   const [shrink, setShrink] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 60) {
+      if (
+        scrollContainerRef.current &&
+        scrollContainerRef.current.scrollTop > 60
+      ) {
         setShrink(true);
       } else {
         setShrink(false);
       }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [scrollContainerRef]);
 
   return (
     <header className={shrink ? "shrink" : ""}>
       <h1>Nathan Delange</h1>
       <nav>
-        <a>À Propos</a>
         <a>Projets</a>
         <a>Contact</a>
       </nav>

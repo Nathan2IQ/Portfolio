@@ -1,0 +1,49 @@
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 68px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.video-header-container {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(140deg, #333333, 40%, #5c5c5c, #858585);
+  min-height: 50vh;
+}
+
+.video-header-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.video-header-container,
+.main-content {
+  scroll-snap-stop: always;
+}
+
+.video-header-container .video-container {
+  height: 100vh;
+}
+
+.video-header-container header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}

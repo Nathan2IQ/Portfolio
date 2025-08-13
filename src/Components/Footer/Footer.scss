@@ -1,6 +1,7 @@
 footer {
   background: linear-gradient(20deg, #333333, 40%, #5c5c5c, #858585);
   padding: 20px 50px;
+  scroll-snap-align: end;
 
   .contact {
     display: flex;
