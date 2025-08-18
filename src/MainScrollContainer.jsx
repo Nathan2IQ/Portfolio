@@ -17,8 +17,8 @@ const MainScrollContainer = () => {
         <main className="main-content">
           <Works />
         </main>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

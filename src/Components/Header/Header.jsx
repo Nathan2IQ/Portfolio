@@ -31,8 +31,8 @@ export default function Header({ scrollContainerRef }) {
     <header className={shrink ? "shrink" : ""}>
       <h1>Nathan Delange</h1>
       <nav>
-        <a>Projets</a>
-        <a>Contact</a>
+        <a href="#first-work-card">Projets</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
   );

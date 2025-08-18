@@ -1,5 +1,6 @@
 footer {
-  background: linear-gradient(20deg, #333333, 40%, #5c5c5c, #858585);
+  background: rgb(30, 30, 30, 0.5);
+  backdrop-filter: blur(10px);
   padding: 20px 50px;
   scroll-snap-align: end;
 

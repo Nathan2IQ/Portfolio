@@ -2,7 +2,7 @@ import "./Footer.scss";
 
 export default function () {
   return (
-    <footer>
+    <footer id="contact">
       <div className="contact">
         <div>
           <h3>Merci pour votre visite !</h3>
