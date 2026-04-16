@@ -5,13 +5,14 @@ import { RouterLink } from 'vue-router'
 <template>
   <header>
     <div class="name__wrapper">
-      <h1><span>&lt;delange</span>.dev<span>/&gt;</span></h1>
+      <RouterLink to="/home">
+        <h1>delange.dev</h1>
+      </RouterLink>
     </div>
     <nav>
       <ul>
-        <li><RouterLink to="/home">Home</RouterLink></li>
-        <li><RouterLink to="/about">About</RouterLink></li>
-        <li><RouterLink to="/projects">Projects</RouterLink></li>
+        <li><RouterLink to="/about">Services</RouterLink></li>
+        <li><RouterLink to="/projects">Projets</RouterLink></li>
         <li><RouterLink to="/contact">Contact</RouterLink></li>
       </ul>
     </nav>
@@ -33,8 +34,8 @@ header {
 }
 
 h1 {
-  font-family: var(--sans);
-  font-size: 15px;
+  font-size: 16px;
+  color: var(--white);
 }
 
 span {
@@ -70,7 +71,7 @@ a:hover {
   background: var(--cyan-dim);
   border: 0.5px solid var(--cyan-border);
   border-radius: var(--radius-pill);
-  padding: 7px 16px;
+  padding: 10px 16px;
   font-size: 12px;
   font-weight: 500;
   color: var(--cyan);

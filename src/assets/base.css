@@ -51,31 +51,6 @@ main {
   padding: 0 40px;
 }
 
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(123, 108, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(123, 108, 255, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.bg-scanlines {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.05) 3px,
-    rgba(0, 0, 0, 0.05) 4px
-  );
-}
-
 .bg-orb {
   position: fixed;
   border-radius: 50%;
