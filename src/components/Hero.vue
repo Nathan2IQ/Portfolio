@@ -120,7 +120,7 @@
 }
 
 .btn-primary:hover {
-  background: black;
+  background: var(--bg-card-hover);
   border: var(--violet) 1px solid;
 }
 

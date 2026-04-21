@@ -1,19 +1,13 @@
-<script>
-import { RouterLink } from 'vue-router'
-</script>
-
 <template>
   <header>
     <div class="name__wrapper">
-      <RouterLink to="/home">
-        <h1>delange.dev</h1>
-      </RouterLink>
+      <h1>delange.dev</h1>
     </div>
     <nav>
       <ul>
-        <li><RouterLink to="/about">Services</RouterLink></li>
-        <li><RouterLink to="/projects">Projets</RouterLink></li>
-        <li><RouterLink to="/contact">Contact</RouterLink></li>
+        <li><a href="/about">Services</a></li>
+        <li><a href="/projects">Projets</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
     <div class="nav__badge">
