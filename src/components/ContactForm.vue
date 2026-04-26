@@ -11,10 +11,40 @@ export default {
       loading: false,
       success: false,
       error: false,
+      touched: {
+        name: false,
+        email: false,
+        message: false,
+      },
     }
   },
+  computed: {
+    isEmailValid() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return emailRegex.test(this.form.email)
+    },
+    isNameValid() {
+      return this.form.name.trim().length >= 2
+    },
+    isMessageValid() {
+      return this.form.message.trim().length >= 10
+    },
+    isFormValid() {
+      return this.isNameValid && this.isEmailValid && this.isMessageValid
+    },
+  },
   methods: {
+    markAsTouched(field) {
+      this.touched[field] = true
+    },
     async handleSubmit() {
+      // Marquer tous les champs comme touchés
+      Object.keys(this.touched).forEach((key) => {
+        this.touched[key] = true
+      })
+
+      if (!this.isFormValid) return
+
       this.loading = true
       this.success = false
       this.error = false
@@ -31,6 +61,7 @@ export default {
         if (response.ok) {
           this.success = true
           this.form = { name: '', email: '', message: '', _gotcha: '' }
+          this.touched = { name: false, email: false, message: false }
         } else {
           this.error = true
         }
@@ -46,14 +77,54 @@ export default {
 
 <template>
   <form @submit.prevent="handleSubmit" class="contact-form">
-    <input v-model="form.name" type="text" placeholder="Nom" required />
-    <input v-model="form.email" type="email" placeholder="Email" required />
-    <textarea v-model="form.message" placeholder="Message" required></textarea>
+    <div class="form-group">
+      <input
+        v-model="form.name"
+        type="text"
+        placeholder="Nom"
+        required
+        @blur="markAsTouched('name')"
+        :class="{ invalid: touched.name && !isNameValid, valid: touched.name && isNameValid }"
+      />
+      <span v-if="touched.name && !isNameValid" class="field-error">
+        Le nom doit contenir au moins 2 caractères
+      </span>
+    </div>
+
+    <div class="form-group">
+      <input
+        v-model="form.email"
+        type="email"
+        placeholder="Email"
+        required
+        @blur="markAsTouched('email')"
+        :class="{ invalid: touched.email && !isEmailValid, valid: touched.email && isEmailValid }"
+      />
+      <span v-if="touched.email && !isEmailValid" class="field-error">
+        Veuillez entrer un email valide
+      </span>
+    </div>
+
+    <div class="form-group">
+      <textarea
+        v-model="form.message"
+        placeholder="Message"
+        required
+        @blur="markAsTouched('message')"
+        :class="{
+          invalid: touched.message && !isMessageValid,
+          valid: touched.message && isMessageValid,
+        }"
+      ></textarea>
+      <span v-if="touched.message && !isMessageValid" class="field-error">
+        Le message doit contenir au moins 10 caractères
+      </span>
+    </div>
 
     <!-- Honeypot -->
     <input v-model="form._gotcha" type="text" style="display: none" />
 
-    <button :disabled="loading">
+    <button :disabled="loading || !isFormValid">
       {{ loading ? 'Envoi...' : 'Envoyer' }}
     </button>
 
@@ -69,6 +140,30 @@ export default {
   flex-direction: column;
   gap: 14px;
   width: 80%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-error {
+  font-size: 12px;
+  color: #ff6b6b;
+  padding-left: 4px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 input,
@@ -98,6 +193,16 @@ textarea:focus {
 input:hover,
 textarea:hover {
   border-color: var(--border-hover);
+}
+
+input.valid,
+textarea.valid {
+  border-color: var(--cyan-border);
+}
+
+input.invalid,
+textarea.invalid {
+  border-color: rgba(255, 107, 107, 0.4);
 }
 
 textarea {
@@ -156,5 +261,34 @@ button:disabled {
   border: 0.5px solid rgba(255, 107, 107, 0.25);
   border-radius: var(--radius-sm);
   text-align: center;
+}
+
+@media (max-width: 320px) {
+  .contact-form {
+    gap: 12px;
+  }
+
+  input,
+  textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+
+  button {
+    padding: 12px 24px;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .field-error,
+  .success,
+  .error {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
 }
 </style>

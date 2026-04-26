@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p>&copy; 2026 Nathan Delange. All rights reserved.</p>
+    <p>&copy; 2026 Nathan Delange. Tous droits réservés.</p>
     <a href="mailto:delange.dev@gmail.com">delange.dev@gmail.com</a>
   </footer>
 </template>
@@ -29,5 +29,26 @@
 
 .footer a:hover {
   color: var(--white);
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column-reverse;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer {
+    padding: 20px 0;
+    margin-bottom: 24px;
+    gap: 14px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 11px;
+  }
 }
 </style>

@@ -36,6 +36,10 @@
   font-weight: normal;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-display);
   background: var(--bg);
@@ -72,4 +76,32 @@ main {
   bottom: -100px;
   left: -100px;
   filter: blur(80px);
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 425px) {
+  main {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  main {
+    padding: 0 16px;
+  }
+
+  .bg-orb-1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .bg-orb-2 {
+    width: 300px;
+    height: 300px;
+  }
 }

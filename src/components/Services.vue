@@ -1,5 +1,53 @@
+<script>
+import VanillaTilt from 'vanilla-tilt'
+
+export default {
+  name: 'Services',
+  mounted() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      },
+      { threshold: 0.1 },
+    )
+
+    const mainService = document.querySelector('.main-service')
+    const serviceItems = document.querySelectorAll('.service-item')
+
+    if (mainService) {
+      observer.observe(mainService)
+
+      // Attendre que l'animation d'apparition soit terminée avant d'initialiser VanillaTilt
+      setTimeout(() => {
+        VanillaTilt.init(mainService, {
+          max: 5,
+          speed: 300,
+          glare: true,
+          'max-glare': 0.06,
+          scale: 1.02,
+          perspective: 2000,
+          gyroscope: false,
+        })
+      }, 700) // Attendre la fin de l'animation fadeInScale (0.6s + 0.1s delay)
+    }
+    serviceItems.forEach((item) => observer.observe(item))
+  },
+  beforeUnmount() {
+    // Nettoyer l'instance VanillaTilt
+    const mainService = document.querySelector('.main-service')
+    if (mainService && mainService.vanillaTilt) {
+      mainService.vanillaTilt.destroy()
+    }
+  },
+}
+</script>
+
 <template>
-  <section class="services">
+  <section id="services" class="services">
     <div class="service-header">
       <h2 class="service-label">Ce que je fais</h2>
       <div class="service-rule"></div>
@@ -27,8 +75,8 @@
       </div>
       <h3 class="service-name">Sites & Applications Web</h3>
       <p class="service-desc">
-        Des interfaces propres et rapides, pensées pour vos utilisateurs. Du site vitrine à
-        l'application sur-mesure.
+        Des interfaces propres et rapides, pensées pour vos utilisateurs.<br />
+        Du site vitrine à l'application sur-mesure.
       </p>
     </article>
     <div class="service-list">
@@ -78,8 +126,8 @@
         </div>
         <h3 class="service-name">Conseil & Accompagnement</h3>
         <p class="service-desc">
-          Vous avez un projet mais pas encore les mots pour le décrire ? Je vous aide à cadrer,
-          chiffrer et démarrer sereinement.
+          Vous avez un projet et pas encore de mots pour le décrire ? Je vous aide à créer, chiffrer
+          et démarrer sereinement.
         </p>
       </article>
       <article class="service-item">
@@ -132,7 +180,7 @@
 }
 
 .service-label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--white-25);
   text-transform: uppercase;
@@ -150,12 +198,59 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: all 0.4s ease-out;
+  opacity: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.main-service.visible {
+  animation: fadeInOnly 0.6s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInOnly {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .main-service:hover {
-  border-color: var(--violet);
-  transform: scale(1.05);
+  border-color: var(--violet-light);
+}
+
+/* Styles pour l'effet glare de VanillaTilt */
+.main-service .js-tilt-glare {
+  border-radius: var(--radius-lg);
+}
+
+/* Effet 3D sur les enfants du service principal */
+.main-service .service-icon {
+  transform: translateZ(20px);
+}
+
+.main-service .service-name {
+  transform: translateZ(30px);
+}
+
+.main-service .service-desc {
+  transform: translateZ(15px);
 }
 
 .service-rule {
@@ -179,12 +274,45 @@
   width: calc(50% - 20px);
   box-sizing: border-box;
   transition: all 0.2s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.service-item.visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-item.visible:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.service-item.visible:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.service-item.visible:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.service-item.visible:nth-child(4) {
+  animation-delay: 0.5s;
 }
 
 .service-item:hover {
   border-color: var(--border-hover);
   background: var(--bg-card-hover);
-  transform: translateY(-4px);
+  transform: translateY(-4px) scaleY(1.02);
 }
 
 .service-icon {
@@ -223,6 +351,71 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 425px) {
+  .services {
+    padding: 40px 0;
+  }
+
+  .main-service {
+    width: 100%;
+    padding: 24px 20px;
+  }
+
+  .service-list {
+    flex-direction: column;
+  }
+
+  .service-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .services {
+    padding: 30px 0;
+  }
+
+  .service-header {
+    margin-bottom: 24px;
+  }
+
+  .service-label {
+    font-size: 11px;
+  }
+
+  .main-service {
+    padding: 20px 16px;
+    margin: 20px auto 32px;
+  }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 14px;
+  }
+
+  .service-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .service-name {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .service-item {
+    padding: 24px 20px;
+    margin-bottom: 16px;
   }
 }
 </style>

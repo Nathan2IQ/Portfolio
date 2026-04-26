@@ -1,17 +1,17 @@
 <template>
-  <header>
+  <header role="banner">
     <div class="name__wrapper">
-      <h1>delange.dev</h1>
+      <a href="#hero" aria-label="Retour à l'accueil"><h1>delange.dev</h1></a>
     </div>
-    <nav>
+    <nav role="navigation" aria-label="Navigation principale">
       <ul>
-        <li><a href="/about">Services</a></li>
-        <li><a href="/projects">Projets</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="nav__badge">
-      <div class="nav__badge--dot"></div>
+    <div class="nav__badge" aria-label="Statut de disponibilité">
+      <div class="nav__badge--dot" aria-hidden="true"></div>
       Disponible
     </div>
   </header>
@@ -30,6 +30,11 @@ header {
 h1 {
   font-size: 16px;
   color: var(--white);
+}
+
+.name__wrapper a {
+  text-decoration: none;
+  color: inherit;
 }
 
 span {
@@ -92,6 +97,45 @@ a:hover {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@media (max-width: 425px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .nav__badge {
+    font-size: 14px;
+  }
+  .nav__badge--dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 320px) {
+  header {
+    padding: 18px 0;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  .nav__badge {
+    font-size: 11px;
+    padding: 8px 12px;
+    gap: 5px;
+  }
+
+  .nav__badge--dot {
+    width: 5px;
+    height: 5px;
   }
 }
 </style>

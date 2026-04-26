@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <section class="contact">
+  <section id="contact" class="contact">
     <div class="contact-header">
       <h2 class="contact-label">Travaillons Ensemble</h2>
       <div class="contact-rule"></div>
@@ -42,7 +42,7 @@ export default {
 }
 
 .contact-label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--white-25);
   text-transform: uppercase;
@@ -87,5 +87,76 @@ export default {
   flex: 1;
   display: flex;
   justify-content: end;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-link {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .contact {
+    padding: 40px 0;
+  }
+
+  .contact-content {
+    padding: 24px 20px;
+  }
+
+  .contact-left h2 {
+    font-size: 28px;
+  }
+
+  .contact-left p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  .contact {
+    padding: 30px 0;
+  }
+
+  .contact-header {
+    margin-bottom: 24px;
+  }
+
+  .contact-label {
+    font-size: 11px;
+  }
+
+  .contact-content {
+    padding: 20px 16px;
+    gap: 24px;
+  }
+
+  .contact-left h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .contact-left p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
 }
 </style>

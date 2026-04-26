@@ -5,6 +5,7 @@ import Services from '@/components/Services.vue'
 import Projects from '@/components/Projects.vue'
 import Contact from '@/components/Contact.vue'
 import Footer from '@/components/Footer.vue'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 </script>
 
 <template>
@@ -14,4 +15,5 @@ import Footer from '@/components/Footer.vue'
   <Projects />
   <Contact />
   <Footer />
+  <ScrollToTop />
 </template>

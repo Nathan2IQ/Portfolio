@@ -1,5 +1,5 @@
 <template>
-  <section class="hero">
+  <section id="hero" class="hero">
     <p class="hero-hello">Bonjour, je suis</p>
     <h1 class="hero-name"><span class="first">Nathan</span><span class="last">Delange</span></h1>
     <div class="hero-dev">
@@ -8,12 +8,13 @@
       <div class="hero-line"></div>
     </div>
     <p class="hero-description">
-      Je construis des expériences web qui allient performance et élégance. Passionné par les
-      interfaces qui donnent l'impression que la technologie est invisible.
+      Je construis des expériences web qui allient performance et élégance.<br />
+      Passionné par les interfaces qui donnent l'impression<br />
+      que la technologie est invisible.
     </p>
     <div class="hero-actions">
-      <button class="btn-primary">Voir mes projets</button>
-      <button class="btn-ghost">Me contacter</button>
+      <a href="#projets"><button class="btn-primary">Voir mes projets</button></a>
+      <a href="#contact"><button class="btn-ghost">Me contacter</button></a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -25,8 +26,8 @@
         <p class="stat-label">Années d'expérience</p>
       </div>
       <div class="stat-item">
-        <h3 class="stat-number cyan">∞</h3>
-        <p class="stat-label">Curiosité</p>
+        <h3 class="stat-number">100%</h3>
+        <p class="stat-label">Optimisé utilisateur</p>
       </div>
     </div>
   </section>
@@ -43,14 +44,14 @@
 }
 
 .hero-hello {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--white-40);
   margin-bottom: 10px;
   font-weight: 400;
 }
 
 .hero-name {
-  font-size: 100px;
+  font-size: 120px;
   font-weight: 800;
   line-height: 0.95;
   margin-bottom: 36px;
@@ -90,9 +91,9 @@
 }
 
 .hero-description {
-  font-size: 18px;
+  font-size: 20px;
   color: var(--white-60);
-  max-width: 600px;
+  max-width: 60%;
   margin-bottom: 48px;
   line-height: 1.5;
 }
@@ -103,6 +104,10 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 72px;
+}
+
+.hero-actions a {
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -177,12 +182,8 @@
   letter-spacing: -0.02em;
 }
 
-.cyan {
-  color: var(--cyan);
-}
-
 .stat-label {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--white-40);
   letter-spacing: 0.02em;
@@ -197,6 +198,121 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-name {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-hello {
+    font-size: 16px;
+  }
+
+  .hero-name {
+    font-size: 60px;
+  }
+
+  .hero-description {
+    max-width: 90%;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 425px) {
+  .hero {
+    padding: 60px 0 40px;
+  }
+
+  .hero-name {
+    font-size: 40px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  br {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-ghost {
+    padding: 14px 24px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .stat-item {
+    border-right: none;
+    border-bottom: 0.5px solid var(--border);
+  }
+}
+
+@media (max-width: 320px) {
+  .hero {
+    padding: 40px 0 30px;
+  }
+
+  .hero-hello {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .hero-name {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  .hero-dev-txt {
+    font-size: 11px;
+  }
+
+  .hero-line {
+    width: 18px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .stat-item {
+    padding: 18px 16px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
   }
 }
 </style>
