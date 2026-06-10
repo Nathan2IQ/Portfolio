@@ -20,7 +20,7 @@ export default {
           description:
             'Ce site internet permet de voir la liste des recettes, de chercher une recette spécifique selon différents critères, et d’afficher la recette voulue.',
           link: 'https://les-petits-plats-plum.vercel.app/',
-          stack: ['Next.js'],
+          stack: ['Next.js', "Projet d'étude"],
           icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 4v16" stroke="#ff6b6b" stroke-width="1.3" stroke-linecap="round"/><path d="M6 4v6M8 4v6M10 4v6" stroke="#ff6b6b" stroke-width="1.2" stroke-linecap="round"/><path d="M16 4v16" stroke="#ff8787" stroke-width="1.3" stroke-linecap="round"/><path d="M14 4h4v3l-2 1z" fill="#ff8787" opacity="0.4"/></svg>`,
         },
         {
@@ -29,7 +29,7 @@ export default {
           description:
             'Mon travail sur ce projet à été de référencer ce site sur les moteurs de recherche, d’améliorer le référencement naturel et le SEO.',
           link: 'https://ninacarducci-github-io-six.vercel.app/',
-          stack: ['SEO'],
+          stack: ['SEO', "Projet d'étude"],
           icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#4ecdc4" stroke-width="1.3"/><path d="m21 21-4-4" stroke="#4ecdc4" stroke-width="1.5" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="#4ecdc4" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/></svg>`,
         },
       ],
@@ -282,8 +282,8 @@ export default {
 .project-stack span {
   font-size: 11px;
   font-weight: 400;
-  color: var(--white-25);
-  border: 0.5px solid var(--white-12);
+  color: var(--white-40);
+  border: 0.5px solid var(--white-25);
   border-radius: 4px;
   padding: 4px 9px;
 }

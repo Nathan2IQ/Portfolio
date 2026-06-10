@@ -174,12 +174,13 @@
 }
 
 .stat-number {
+  font-family: var(--serif);
   font-size: 28px;
   font-weight: 800;
   color: var(--white);
   line-height: 1;
   margin-bottom: 4px;
-  letter-spacing: -0.02em;
+  height: 32px;
 }
 
 .stat-label {

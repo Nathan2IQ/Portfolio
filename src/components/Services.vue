@@ -32,16 +32,43 @@ export default {
           perspective: 2000,
           gyroscope: false,
         })
-      }, 700) // Attendre la fin de l'animation fadeInScale (0.6s + 0.1s delay)
+      }, 700)
     }
-    serviceItems.forEach((item) => observer.observe(item))
+
+    // Appliquer VanillaTilt à toutes les service-items
+    serviceItems.forEach((item, index) => {
+      observer.observe(item)
+
+      // Attendre que l'animation d'apparition soit terminée avant d'initialiser VanillaTilt
+      setTimeout(
+        () => {
+          VanillaTilt.init(item, {
+            max: 5,
+            speed: 300,
+            glare: true,
+            'max-glare': 0.06,
+            scale: 1.02,
+            perspective: 2000,
+            gyroscope: false,
+          })
+        },
+        900 + index * 100,
+      ) // Décalage selon l'index de la card
+    })
   },
   beforeUnmount() {
-    // Nettoyer l'instance VanillaTilt
+    // Nettoyer toutes les instances VanillaTilt
     const mainService = document.querySelector('.main-service')
     if (mainService && mainService.vanillaTilt) {
       mainService.vanillaTilt.destroy()
     }
+
+    const serviceItems = document.querySelectorAll('.service-item')
+    serviceItems.forEach((item) => {
+      if (item.vanillaTilt) {
+        item.vanillaTilt.destroy()
+      }
+    })
   },
 }
 </script>
@@ -276,6 +303,8 @@ export default {
   transition: all 0.2s ease-out;
   opacity: 0;
   transform: translateY(30px);
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .service-item.visible {
@@ -311,8 +340,24 @@ export default {
 
 .service-item:hover {
   border-color: var(--border-hover);
-  background: var(--bg-card-hover);
-  transform: translateY(-4px) scaleY(1.02);
+}
+
+/* Styles pour l'effet glare de VanillaTilt sur les service-items */
+.service-item .js-tilt-glare {
+  border-radius: var(--radius-lg);
+}
+
+/* Effet 3D sur les enfants des service-items */
+.service-item .service-icon {
+  transform: translateZ(20px);
+}
+
+.service-item .service-name {
+  transform: translateZ(30px);
+}
+
+.service-item .service-desc {
+  transform: translateZ(15px);
 }
 
 .service-icon {
@@ -340,18 +385,6 @@ export default {
   font-size: 18px;
   line-height: 1.7;
   color: var(--white-40);
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 425px) {

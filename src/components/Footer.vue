@@ -1,6 +1,9 @@
 <template>
   <footer class="footer">
-    <p>&copy; 2026 Nathan Delange. Tous droits réservés.</p>
+    <div class="footer-left">
+      <p>&copy; 2026 Nathan Delange. Tous droits réservés.</p>
+      <router-link to="/mentions-legales" class="legal-link">Mentions légales</router-link>
+    </div>
     <a href="mailto:delange.dev@gmail.com">delange.dev@gmail.com</a>
   </footer>
 </template>
@@ -15,19 +18,28 @@
   margin-bottom: 32px;
 }
 
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .footer p {
   font-size: 12px;
   color: var(--white-25);
+  margin: 0;
 }
 
-.footer a {
+.footer a,
+.legal-link {
   font-size: 12px;
   color: var(--white-25);
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.footer a:hover {
+.footer a:hover,
+.legal-link:hover {
   color: var(--white);
 }
 
@@ -36,6 +48,11 @@
     flex-direction: column-reverse;
     gap: 20px;
     text-align: center;
+  }
+
+  .footer-left {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
@@ -47,7 +64,8 @@
   }
 
   .footer p,
-  .footer a {
+  .footer a,
+  .legal-link {
     font-size: 11px;
   }
 }

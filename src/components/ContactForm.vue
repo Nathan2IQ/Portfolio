@@ -27,10 +27,13 @@ export default {
       return this.form.name.trim().length >= 2
     },
     isMessageValid() {
-      return this.form.message.trim().length >= 10
+      return this.form.message.trim().length >= 10 && this.form.message.length <= 400
     },
     isFormValid() {
       return this.isNameValid && this.isEmailValid && this.isMessageValid
+    },
+    messageLength() {
+      return this.form.message.length
     },
   },
   methods: {
@@ -110,15 +113,21 @@ export default {
         v-model="form.message"
         placeholder="Message"
         required
+        maxlength="800"
         @blur="markAsTouched('message')"
         :class="{
           invalid: touched.message && !isMessageValid,
           valid: touched.message && isMessageValid,
         }"
       ></textarea>
-      <span v-if="touched.message && !isMessageValid" class="field-error">
-        Le message doit contenir au moins 10 caractères
-      </span>
+      <div class="message-footer">
+        <span v-if="touched.message && !isMessageValid" class="field-error">
+          Le message doit contenir au moins 10 caractères
+        </span>
+        <span class="char-counter" :class="{ warning: messageLength > 300 }">
+          {{ messageLength }}/400
+        </span>
+      </div>
     </div>
 
     <!-- Honeypot -->
@@ -148,11 +157,30 @@ export default {
   gap: 6px;
 }
 
+.message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
 .field-error {
   font-size: 12px;
   color: #ff6b6b;
   padding-left: 4px;
   animation: slideDown 0.3s ease;
+}
+
+.char-counter {
+  font-size: 12px;
+  color: var(--white-40);
+  padding-right: 4px;
+  transition: color 0.3s ease;
+}
+
+.char-counter.warning {
+  color: #ffa500;
+  font-weight: 600;
 }
 
 @keyframes slideDown {
@@ -289,6 +317,10 @@ button:disabled {
   .error {
     font-size: 11px;
     padding: 6px 10px;
+  }
+
+  .char-counter {
+    font-size: 11px;
   }
 }
 </style>
